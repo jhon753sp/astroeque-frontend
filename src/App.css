@@ -1,0 +1,789 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f4faf7, #e3f2eb);
+  color: #26332d;
+}
+
+h1 {
+  margin: 0 0 15px;
+  font-size: 4rem;
+  color: #1f6d4f;
+}
+
+h2 {
+  max-width: 800px;
+  margin: 0 0 20px;
+  font-size: 1.8rem;
+  color: #34483f;
+}
+
+p {
+  max-width: 700px;
+  margin: 0 0 30px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #65736d;
+}
+
+button {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 10px;
+  background-color: #1f6d4f;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #17543d;
+  transform: translateY(-2px);
+}
+/* Encabezado de Astroeque */
+
+.header {
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  color: #1f6d4f;
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.nav a {
+  color: #34483f;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  color: #1f6d4f;
+}
+
+.login-btn {
+  padding: 11px 22px;
+  border-radius: 8px;
+  background-color: #1f6d4f;
+  color: white;
+}
+/* SECCIÓN DE PRODUCTOS */
+
+.productos {
+  padding: 70px 8%;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.productos h2 {
+  color: #1f6d4f;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.productos-descripcion {
+  color: #6b756f;
+  margin-bottom: 40px;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.producto-card {
+  background-color: #f5faf7;
+  border: 1px solid #dce9e2;
+  border-radius: 15px;
+  padding: 30px 20px;
+  text-align: left;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.producto-card:hover {
+  transform: translateY(-5px);
+}
+
+.producto-icono {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.producto-card h3 {
+  color: #263a31;
+  font-size: 21px;
+  margin-bottom: 18px;
+}
+
+.producto-card p {
+  color: #65716b;
+  margin: 10px 0;
+}
+
+.producto-card button {
+  margin-top: 18px;
+  background-color: #1f6d4f;
+  color: white;
+  border: none;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.producto-card button:hover {
+  background-color: #18563e;
+}
+
+@media (max-width: 800px) {
+  .productos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.explorar-btn {
+  display: inline-block;
+  background-color: #1f6d4f;
+  color: white;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.explorar-btn:hover {
+  background-color: #18563e;
+}
+/* =========================
+   SECCIÓN INTERCAMBIOS
+========================= */
+
+.intercambios {
+  padding: 70px 12%;
+  background-color: #f7faf8;
+}
+
+.intercambios h2 {
+  color: #1f6d4f;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.intercambios-descripcion {
+  color: #6b746f;
+  font-size: 16px;
+  margin-bottom: 35px;
+}
+
+.intercambios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.intercambio-card {
+  background-color: #ffffff;
+  border: 1px solid #dce8e1;
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+}
+
+.intercambio-card h3 {
+  color: #26352e;
+  margin-bottom: 20px;
+}
+
+.intercambio-card p {
+  color: #69736e;
+  margin-bottom: 15px;
+}
+
+.intercambio-card button {
+  margin-top: 10px;
+  background-color: #1f6d4f;
+  color: white;
+  border: none;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.intercambio-card button:hover {
+  background-color: #18563e;
+}
+
+@media (max-width: 800px) {
+  .intercambios-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================
+   SECCIÓN EVENTOS
+========================= */
+
+.eventos {
+  padding: 70px 12%;
+  background-color: #ffffff;
+}
+
+.eventos h2 {
+  color: #1f6d4f;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.eventos-descripcion {
+  color: #6b746f;
+  font-size: 16px;
+  margin-bottom: 35px;
+}
+
+.eventos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.evento-card {
+  background-color: #f7faf8;
+  border: 1px solid #dce8e1;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+  max-width: 500px;
+}
+
+.evento-icono {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.evento-card h3 {
+  color: #26352e;
+  font-size: 21px;
+  margin-bottom: 15px;
+}
+
+.evento-card p {
+  color: #69736e;
+  margin-bottom: 14px;
+}
+
+.evento-card button {
+  margin-top: 10px;
+  background-color: #1f6d4f;
+  color: white;
+  border: none;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.evento-card button:hover {
+  background-color: #18563e;
+}
+
+@media (max-width: 800px) {
+  .eventos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.publicar-btn {
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  background-color: #1f6d4f;
+  color: white;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.publicar-btn:hover {
+  background-color: #18563e;
+}
+/* FORMULARIO PUBLICAR PRODUCTO */
+
+.publicar-section {
+  padding: 70px 20px;
+  background-color: #f7faf8;
+  text-align: center;
+}
+
+.publicar-section h2 {
+  color: #1f6d4f;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.publicar-descripcion {
+  color: #6b736f;
+  margin-bottom: 30px;
+}
+
+.publicar-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: white;
+  border: 1px solid #dce7e1;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  text-align: left;
+}
+
+.publicar-form label {
+  color: #2f3934;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.publicar-form input,
+.publicar-form select,
+.publicar-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #cbd8d1;
+  border-radius: 7px;
+  font-size: 16px;
+  font-family: inherit;
+  background-color: white;
+}
+
+.publicar-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.publicar-form input:focus,
+.publicar-form select:focus,
+.publicar-form textarea:focus {
+  outline: 2px solid #1f6d4f;
+  border-color: #1f6d4f;
+}
+
+.publicar-form button {
+  margin-top: 15px;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1f6d4f;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.publicar-form button:hover {
+  background-color: #18563e;
+}
+.detalle-producto {
+  padding: 50px 20px;
+  background: #f4faf7;
+  text-align: center;
+}
+
+.detalle-producto h2 {
+  color: #1f6d4f;
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+.detalle-card {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 30px;
+  background: white;
+  border: 1px solid #d9e8e0;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.detalle-card .producto-icono {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.detalle-card h3 {
+  color: #243c32;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.detalle-card p {
+  color: #66736d;
+  margin: 12px 0;
+}
+
+.detalle-card button {
+  margin-top: 20px;
+  padding: 10px 25px;
+  background: #1f6d4f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.detalle-card button:hover {
+  opacity: 0.9;
+}
+
+/* ===== INICIO DE SESIÓN ===== */
+
+.login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  background: #f1f8f5;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  padding: 35px;
+  border: 1px solid #d9e8e0;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-card h2 {
+  color: #1f6d4f;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.login-card label {
+  color: #243c32;
+  font-weight: bold;
+}
+
+.login-card input {
+  padding: 12px;
+  border: 1px solid #cbd8d2;
+  border-radius: 7px;
+  font-size: 15px;
+  outline: none;
+}
+
+.login-card input:focus {
+  border-color: #1f6d4f;
+}
+
+.login-card button {
+  margin-top: 8px;
+  padding: 11px;
+  background: #1f6d4f;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.login-card button:hover {
+  opacity: 0.9;
+}
+.sesion-activa {
+  background-color: #1976d2;
+  color: white;
+}
+
+.sesion-activa:hover {
+  background-color: #1565c0;
+}
+/* ===== MODAL CERRAR SESIÓN ASTROEQUE ===== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-cierre {
+  background: white;
+  width: 90%;
+  max-width: 400px;
+  padding: 35px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.modal-icono {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.modal-cierre h2 {
+  color: #1f6d4f;
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+
+.modal-cierre p {
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+.modal-botones {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.modal-botones button {
+  padding: 11px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-cancelar {
+  background: #e8ecea;
+  color: #333;
+}
+
+.btn-confirmar {
+  background: #1f6d4f;
+  color: white;
+}
+
+.btn-cancelar:hover,
+.btn-confirmar:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ===== ASTROEQUE: DISEÑO RESPONSIVO ===== */
+
+@media (max-width: 600px) {
+  html, body, #root {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+  }
+
+  header nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  header nav a {
+    font-size: 13px;
+  }
+
+  .login-btn {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  section {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero {
+    width: 100%;
+    max-width: 100%;
+    min-height: 450px;
+    padding: 40px 20px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .modal-cierre {
+    width: 90%;
+    padding: 24px;
+  }
+}
+
+/* ===== ACCESIBILIDAD ASTROEQUE ===== */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #e6a817;
+  outline-offset: 3px;
+}
+
+/* ===== FOCO UNIFICADO EN FORMULARIOS ===== */
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #e6a817 !important;
+  outline-offset: 3px;
+  box-shadow: none;
+}
+/* ===== BOTÓN ELIMINAR PRODUCTO ===== */
+
+.btn-eliminar {
+  background-color: #fce8e8;
+  color: #c0392b;
+  border: 1px solid #e8b4b4;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-left: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-eliminar:hover {
+  background-color: #c0392b;
+  color: white;
+  border-color: #c0392b;
+}
+/* Color definitivo del botón eliminar */
+
+.producto-card .btn-eliminar {
+  background-color: #fce8e8;
+  color: #c0392b;
+  border: 1px solid #e8b4b4;
+}
+
+.producto-card .btn-eliminar:hover {
+  background-color: #c0392b;
+  color: white;
+}
+/* ===== CONFIRMACIÓN PARA ELIMINAR PRODUCTO ===== */
+
+.btn-confirmar-eliminar {
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-confirmar-eliminar:hover {
+  background-color: #a93226;
+  transform: translateY(-2px);
+}
+/* ===== BOTÓN CONFIRMAR ELIMINACIÓN ===== */
+
+.modal-botones .btn-confirmar-eliminar {
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.modal-botones .btn-confirmar-eliminar:hover {
+  background-color: #922b21;
+  transform: translateY(-2px);
+}
+/* ===== BOTÓN EDITAR PRODUCTO ===== */
+
+.btn-editar {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin: 8px 10px 8px 0;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-editar:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+/* ===== DESCRIPCIÓN DEL PRODUCTO ===== */
+
+.detalle-card p {
+  background-color: transparent;
+  color: #333333;
+  line-height: 1.6;
+}
+
+.detalle-card p strong {
+  color: #1f6d4f;
+}
