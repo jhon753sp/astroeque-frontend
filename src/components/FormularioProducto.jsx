@@ -1,3 +1,7 @@
+ // Funcionalidad: Publicación y edición de productos.
+// Proyecto: Astroeque.
+// Este componente permite ingresar los datos
+// de los productos que los usuarios desean intercambiar.
  function FormularioProducto({
   producto,
   handleChange,
