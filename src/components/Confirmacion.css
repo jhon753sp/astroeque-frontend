@@ -1,0 +1,169 @@
+.confirmacion-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.confirmacion-contenedor {
+  background: #ffffff;
+  width: 100%;
+  max-width: 440px;
+  padding: 34px;
+  box-sizing: border-box;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+  animation: entradaConfirmacion 0.25s ease-out;
+}
+
+.confirmacion-marca {
+  color: #38674f;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+}
+
+.confirmacion-icono {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0 auto 22px;
+}
+
+.confirmacion-icono.eliminar {
+  background: #f8e7e7;
+  color: #b64a4a;
+}
+
+.confirmacion-icono.salir,
+.confirmacion-icono.cerrar {
+  background: #e3f1e8;
+  color: #38674f;
+}
+
+.confirmacion-contenedor h2 {
+  color: #38674f;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
+.confirmacion-contenedor p {
+  color: #616b65;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 14px;
+  overflow-wrap: anywhere;
+}
+
+.confirmacion-contenedor .confirmacion-descripcion {
+  font-size: 14px;
+  color: #737373;
+  line-height: 1.6;
+}
+
+.confirmacion-botones {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.confirmacion-botones button {
+  flex: 1;
+  min-height: 48px;
+  padding: 14px 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.confirmacion-cancelar {
+  background: #ffffff;
+  color: #38674f;
+  border: 1px solid #38674f;
+}
+
+.confirmacion-cancelar:hover {
+  background: #e3f1e8;
+}
+
+.confirmacion-aceptar {
+  background: #38674f;
+  color: #ffffff;
+  border: 1px solid transparent;
+}
+
+.confirmacion-aceptar:hover {
+  background: #294f3c;
+}
+
+.confirmacion-aceptar.eliminar {
+  background: #b64a4a;
+}
+
+.confirmacion-aceptar.eliminar:hover {
+  background: #963939;
+}
+
+.confirmacion-botones button:focus-visible {
+  outline: 3px solid #38674f;
+  outline-offset: 3px;
+}
+
+@keyframes entradaConfirmacion {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .confirmacion-contenedor {
+    padding: 26px 22px;
+    border-radius: 18px;
+  }
+
+  .confirmacion-contenedor h2 {
+    font-size: 23px;
+  }
+
+  .confirmacion-icono {
+    width: 68px;
+    height: 68px;
+    font-size: 32px;
+  }
+
+  .confirmacion-botones {
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confirmacion-contenedor {
+    animation: none;
+  }
+
+  .confirmacion-botones button {
+    transition: none;
+  }
+}

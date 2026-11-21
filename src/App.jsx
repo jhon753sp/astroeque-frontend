@@ -10,10 +10,15 @@ import DetalleEvento from './components/DetalleEvento'
 import { eventos } from './data/eventos'
 import { intercambios } from './data/intercambios'
 import { productosIniciales } from './data/productos'
-
+import RegistroUsuario from './components/RegistroUsuario'
+import Alerta from './components/Alerta'
+import Confirmacion from './components/Confirmacion'
 
 function App() {
 
+const [alerta, setAlerta] = useState(null)
+
+const [registroVisible, setRegistroVisible] = useState(false)
   const [producto, setProducto] = useState({
   nombre: '',
   categoria: '',
@@ -49,6 +54,11 @@ const confirmarEliminarProducto = () => {
   setProductoSeleccionado(null)
   setProductoAEliminar(null)
   setConfirmarEliminacion(false)
+  setAlerta({
+  tipo: 'exito',
+  titulo: '¡Producto eliminado!',
+  mensaje: 'Tu producto ha sido retirado correctamente del catálogo de Astroeque.'
+})
 }
 const [productoSeleccionado, setProductoSeleccionado] = useState(null)
 const [productoEnEdicion, setProductoEnEdicion] = useState(null)
@@ -66,6 +76,12 @@ const guardarEdicionProducto = (e) => {
   )
 
   setProductoEnEdicion(null)
+
+  setAlerta({
+    tipo: 'exito',
+    titulo: '¡Producto actualizado!',
+    mensaje: 'Los cambios de tu producto se han guardado correctamente. ¡Gracias por mantener tu publicación al día!'
+  })
 }
 const [intercambioSeleccionado, setIntercambioSeleccionado] = useState(null)
 const [eventoSeleccionado, setEventoSeleccionado] = useState(null)
@@ -76,20 +92,35 @@ const [confirmarCierre, setConfirmarCierre] = useState(false)
 const [productoAEliminar, setProductoAEliminar] = useState(null)
 const [confirmarEliminacion, setConfirmarEliminacion] = useState(false)
 const handleLogin = () => {
-  if (!login.correo || !login.contrasena) {
-    alert('Por favor ingresa el correo y la contraseña')
+  if (!login.correo.trim() || !login.contrasena.trim()) {
+    setAlerta({
+      tipo: 'advertencia',
+      titulo: '¡Un momento!',
+      mensaje: 'Por favor, ingresa tu correo electrónico y contraseña.'
+    })
     return
   }
-const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-if (!correoValido.test(login.correo.trim())) {
-  alert('Por favor ingresa un correo electrónico válido')
-  return
-}
-  alert('¡Sesión iniciada correctamente en Astroeque!')
+  const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+  if (!correoValido.test(login.correo.trim())) {
+    setAlerta({
+      tipo: 'error',
+      titulo: 'Verifica tu correo',
+      mensaje: 'Ingresa un correo electrónico válido e inténtalo nuevamente.'
+    })
+    return
+  }
+
   setSesionIniciada(true)
   setLoginVisible(false)
   setLogin({ correo: '', contrasena: '' })
+
+  setAlerta({
+    tipo: 'exito',
+    titulo: '¡Bienvenido a Astroeque!',
+    mensaje: 'Has iniciado sesión correctamente. ¡Comienza a explorar nuestra comunidad!'
+  })
 }
 const handleChange = (e) => {
   setProducto({
@@ -101,17 +132,25 @@ const handleChange = (e) => {
 const handleSubmit = (e) => {
   e.preventDefault()
 
-  if (
-    !producto.nombre ||
-    !producto.categoria ||
-    !producto.ubicacion ||
-    !producto.descripcion
-  ) {
-    alert('Por favor completa todos los campos')
-    return
-  }
+ if (
+  !producto.nombre.trim() ||
+  !producto.categoria.trim() ||
+  !producto.ubicacion.trim() ||
+  !producto.descripcion.trim()
+) {
+setAlerta({
+  tipo: 'advertencia',
+  titulo: '¡Un momento!',
+  mensaje: 'Completa todos los campos para publicar tu producto en Astroeque.'
+})
+  return
+}
  if (producto.nombre.trim().length > 60) {
-  alert('El nombre del producto no puede superar los 60 caracteres')
+ setAlerta({
+  tipo: 'advertencia',
+  titulo: 'Revisa el nombre de tu producto',
+  mensaje: 'El nombre del producto no puede superar los 60 caracteres.'
+})
   return
 }
 
@@ -125,7 +164,11 @@ descripcion: producto.descripcion,
 icono: '📦'
   }
 ])
-  alert(`Producto "${producto.nombre}" publicado correctamente`)
+  setAlerta({
+  tipo: 'exito',
+  titulo: '¡Producto publicado!',
+  mensaje: `Tu producto "${producto.nombre}" ya está disponible en Astroeque. ¡Que comiencen los intercambios!`
+})
 
   setProducto({
     nombre: '',
@@ -160,95 +203,93 @@ useEffect(() => {
 }, [eventoSeleccionado])
   return (
     <>
-      <header className="header">
-        <div className="logo">ASTROEQUE</div>
+     
+<header className="header">
+  <div className="logo">ASTROEQUE</div>
 
-        <nav className="nav">
-          <a href="#inicio">Inicio</a>
-          <a href="#productos">Productos</a>
-          <a href="#intercambios">Intercambios</a>
-          <a href="#eventos">Eventos</a>
-        </nav>
+  <nav className="nav">
+    <a href="#inicio">Inicio</a>
+    <a href="#productos">Productos</a>
+    <a href="#intercambios">Intercambios</a>
+    <a href="#eventos">Eventos</a>
+  </nav>
 
-<button
-  className={`login-btn ${sesionIniciada ? 'sesion-activa' : ''}`}
-  onClick={() => {
-    if (sesionIniciada) {
-      setConfirmarCierre(true)
-    } else {
-      setLoginVisible(true)
-    }
-  }}
->
-  {sesionIniciada ? '✓ Sesión iniciada' : 'Iniciar sesión'}
-</button>
-      </header>
+  <div className="header-acciones">
 
-      {confirmarCierre && (
-  <div className="modal-overlay">
-    <div className="modal-cierre">
-      <div className="modal-icono">🚀</div>
+    {!sesionIniciada && (
+      <button
+        type="button"
+        className="btn-crear-cuenta"
+        onClick={() => {
+          setLoginVisible(false)
+          setRegistroVisible(!registroVisible)
+        }}
+      >
+        {registroVisible ? 'Volver' : 'Crear cuenta'}
+      </button>
+    )}
 
-      <h2>Cerrar sesión</h2>
+    <button
+      className={`login-btn ${sesionIniciada ? 'sesion-activa' : ''}`}
+      onClick={() => {
+        if (sesionIniciada) {
+          setConfirmarCierre(true)
+        } else {
+          setRegistroVisible(false)
+          setLoginVisible(true)
+        }
+      }}
+    >
+      {sesionIniciada ? '✓ Sesión iniciada' : 'Iniciar sesión'}
+    </button>
 
-      <p>¿Deseas cerrar tu sesión en Astroeque?</p>
-
-      <div className="modal-botones">
-        <button
-          className="btn-cancelar"
-          onClick={() => setConfirmarCierre(false)}
-        >
-          Cancelar
-        </button>
-
-        <button
-          className="btn-confirmar"
-          onClick={() => {
-            setSesionIniciada(false)
-            setConfirmarCierre(false)
-          }}
-        >
-          Sí, cerrar sesión
-        </button>
-      </div>
-    </div>
   </div>
+</header>
+
+{registroVisible && !sesionIniciada && (
+  <RegistroUsuario />
+)}
+
+
+     {confirmarCierre && (
+  <Confirmacion
+    tipo="cerrar"
+    titulo="¿Cerrar sesión?"
+    mensaje="¿Deseas cerrar tu sesión en Astroeque?"
+    descripcion="Recuerda que siempre puedes volver a nuestra comunidad."
+    textoConfirmar="Sí, cerrar sesión"
+    onCancelar={() => setConfirmarCierre(false)}
+   onConfirmar={() => {
+  setSesionIniciada(false)
+  setConfirmarCierre(false)
+
+  setAlerta({
+    tipo: 'exito',
+    titulo: '¡Hasta pronto!',
+    mensaje: 'Has cerrado sesión correctamente. Gracias por formar parte de nuestra comunidad. ¡Te esperamos pronto!'
+  })
+}}
+  />
 )}
 {confirmarEliminacion && productoAEliminar && (
-  <div className="modal-overlay">
-    <div className="modal-cierre">
-      <div className="modal-icono">🗑️</div>
-
-      <h2>¿Eliminar producto?</h2>
-
-      <p>
-        ¿Estás seguro de que deseas eliminar
-        <strong> {productoAEliminar.nombre}</strong>
+  <Confirmacion
+    tipo="eliminar"
+    titulo="¿Eliminar producto?"
+    mensaje={
+      <>
+        ¿Estás seguro de que deseas eliminar{' '}
+        <strong>{productoAEliminar.nombre}</strong>
         {' '}de Astroeque?
-      </p>
-
-      <p>Esta acción no se puede deshacer.</p>
-
-      <div className="modal-botones">
-        <button
-          className="btn-cancelar"
-          onClick={() => {
-            setConfirmarEliminacion(false)
-            setProductoAEliminar(null)
-          }}
-        >
-          Cancelar
-        </button>
-
-        <button
-          className="btn-confirmar-eliminar"
-          onClick={confirmarEliminarProducto}
-        >
-          Sí, eliminar
-        </button>
-      </div>
-    </div>
-  </div>
+      </>
+    }
+    descripcion="Esta acción no se puede deshacer."
+    textoConfirmar="Sí, eliminar"
+    onCancelar={() => {
+      setConfirmarEliminacion(false)
+      setProductoAEliminar(null)
+    }}
+    onConfirmar={confirmarEliminarProducto}
+  />
 )}
 
       {loginVisible && (
@@ -446,6 +487,15 @@ useEffect(() => {
   }}
 />
 </section>
+
+{alerta && (
+  <Alerta
+    tipo={alerta.tipo}
+    titulo={alerta.titulo}
+    mensaje={alerta.mensaje}
+    onCerrar={() => setAlerta(null)}
+  />
+)}
     </>
   )
  }
