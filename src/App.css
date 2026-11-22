@@ -145,6 +145,13 @@ button:hover {
   color: #263a31;
   font-size: 21px;
   margin-bottom: 18px;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  overflow-wrap: anywhere;
 }
 
 .producto-card p {

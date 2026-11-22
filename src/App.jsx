@@ -9,10 +9,10 @@ import EventoCard from './components/EventoCard'
 import DetalleEvento from './components/DetalleEvento'
 import { eventos } from './data/eventos'
 import { intercambios } from './data/intercambios'
-import { productosIniciales } from './data/productos'
 import RegistroUsuario from './components/RegistroUsuario'
 import Alerta from './components/comunes/Alerta'
 import Confirmacion from './components/comunes/Confirmacion'
+import useProductos from './hooks/useProductos'
 
 function App() {
 
@@ -26,18 +26,7 @@ const [registroVisible, setRegistroVisible] = useState(false)
   descripcion: ''
 })
 
-const [productos, setProductos] = useState(() => {
-  
-  const productosGuardados = localStorage.getItem('astroeque_productos')
-
-  return productosGuardados
-    ? JSON.parse(productosGuardados)
-    : productosIniciales
-})
-
-useEffect(() => {
-  localStorage.setItem('astroeque_productos', JSON.stringify(productos))
-}, [productos])
+const { productos, setProductos } = useProductos()
 
 const handleEliminarProducto = (productoEliminar) => {
   setProductoAEliminar(productoEliminar)
