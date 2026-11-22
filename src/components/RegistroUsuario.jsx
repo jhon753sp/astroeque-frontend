@@ -1,6 +1,6 @@
 
 import { useState } from 'react'
-import Alerta from './Alerta'
+import Alerta from "./comunes/Alerta";
 
 function RegistroUsuario() {
   const [alerta, setAlerta] = useState(null)
@@ -171,7 +171,7 @@ const handleSubmit = (e) => {
         onCerrar={() => setAlerta(null)}
       />
     )}
-    
+
     </section>
   )
 }

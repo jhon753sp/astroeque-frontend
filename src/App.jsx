@@ -11,8 +11,8 @@ import { eventos } from './data/eventos'
 import { intercambios } from './data/intercambios'
 import { productosIniciales } from './data/productos'
 import RegistroUsuario from './components/RegistroUsuario'
-import Alerta from './components/Alerta'
-import Confirmacion from './components/Confirmacion'
+import Alerta from './components/comunes/Alerta'
+import Confirmacion from './components/comunes/Confirmacion'
 
 function App() {
 
