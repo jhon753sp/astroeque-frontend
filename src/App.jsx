@@ -26,7 +26,12 @@ const [registroVisible, setRegistroVisible] = useState(false)
   descripcion: ''
 })
 
-const { productos, setProductos } = useProductos()
+const {
+  productos,
+  setProductos,
+  eliminarProducto,
+  actualizarProducto
+} = useProductos()
 
 const handleEliminarProducto = (productoEliminar) => {
   setProductoAEliminar(productoEliminar)
@@ -36,10 +41,8 @@ const handleEliminarProducto = (productoEliminar) => {
 const confirmarEliminarProducto = () => {
   if (!productoAEliminar) return
 
-  setProductos((anteriores) =>
-    anteriores.filter((item) => item !== productoAEliminar)
-  )
-
+  eliminarProducto(productoAEliminar)
+  
   setProductoSeleccionado(null)
   setProductoAEliminar(null)
   setConfirmarEliminacion(false)
@@ -56,13 +59,10 @@ const guardarEdicionProducto = (e) => {
 
   if (!productoEnEdicion) return
 
-  setProductos((anteriores) =>
-    anteriores.map((item) =>
-      item === productoEnEdicion.original
-        ? productoEnEdicion.datos
-        : item
-    )
-  )
+  actualizarProducto(
+  productoEnEdicion.original,
+  productoEnEdicion.datos
+)
 
   setProductoEnEdicion(null)
 

@@ -15,7 +15,26 @@ function useProductos() {
     localStorage.setItem('astroeque_productos', JSON.stringify(productos))
   }, [productos])
 
-  return { productos, setProductos }
+  const eliminarProducto = (productoAEliminar) => {
+  setProductos((anteriores) =>
+    anteriores.filter((item) => item !== productoAEliminar)
+  )
+}
+
+const actualizarProducto = (productoOriginal, datosActualizados) => {
+  setProductos((anteriores) =>
+    anteriores.map((item) =>
+      item === productoOriginal ? datosActualizados : item
+    )
+  )
+}
+
+return {
+  productos,
+  setProductos,
+  eliminarProducto,
+  actualizarProducto
+}
 }
 
 export default useProductos
