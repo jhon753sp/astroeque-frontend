@@ -1,0 +1,146 @@
+/* Fondo de la alerta */
+.alerta-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+/* Ventana principal */
+.alerta-contenedor {
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+  animation: aparecerAlerta 0.3s ease-out;
+}
+
+/* Identidad de Astroeque */
+.alerta-marca {
+  color: #1f6d4f;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 22px;
+}
+
+/* Icono circular */
+.alerta-icono {
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  font-weight: bold;
+}
+
+/* Alerta de éxito */
+.alerta-exito .alerta-icono {
+  background: #e2f3e9;
+  color: #1f6d4f;
+}
+
+/* Alerta de advertencia */
+.alerta-advertencia .alerta-icono {
+  background: #fff3d6;
+  color: #d49b27;
+}
+
+/* Alerta de error */
+.alerta-error .alerta-icono {
+  background: #fde8e8;
+  color: #c64747;
+}
+
+/* Alerta de información */
+.alerta-informacion .alerta-icono {
+  background: #e5edff;
+  color: #4875c7;
+}
+
+/* Título */
+.alerta-contenedor h2 {
+  color: #1f6d4f;
+  font-size: 25px;
+  margin: 0 0 12px;
+}
+
+/* Mensaje */
+.alerta-contenedor p {
+  color: #59645e;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 25px;
+}
+
+/* Botón principal */
+.alerta-boton {
+  width: 100%;
+  padding: 13px 20px;
+  background: #1f6d4f;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.alerta-boton:hover {
+  background: #17543d;
+  transform: translateY(-2px);
+}
+
+.alerta-boton:focus-visible {
+  outline: 3px solid #8bbda8;
+  outline-offset: 4px;
+}
+
+/* Animación de entrada */
+@keyframes aparecerAlerta {
+  from {
+    opacity: 0;
+    transform: scale(0.90) translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Adaptación para celulares */
+@media (max-width: 480px) {
+  .alerta-contenedor {
+    padding: 24px;
+    border-radius: 18px;
+  }
+
+  .alerta-contenedor h2 {
+    font-size: 22px;
+  }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .alerta-contenedor {
+    animation: none;
+  }
+
+  .alerta-boton {
+    transition: none;
+  }
+}
